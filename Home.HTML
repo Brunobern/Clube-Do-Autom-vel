@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube Do Automóvel</title>
+    
+    <!-- Adicionando o favicon -->
+    <link rel="icon" href="Logotipo/Logotipo 3.png" type="image/x-icon">
+    
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos do body com fundo azul escuro com gradiente */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            /* Aplicando um gradiente de azul escuro */
+            background: linear-gradient(135deg, #0b1a2b, #191970); /* Gradiente de azul escuro */
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* Cabeçalho */
+        header {
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o cabeçalho */
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            border-radius: 15px;
+            margin-bottom: 90px;
+            text-align: center;
+        }
+
+        header div {
+            display: flex;
+            align-items: center; /* Alinha o logotipo e o título verticalmente */
+            justify-content: center;
+            gap: 15px; /* Espaço entre o logotipo e o título */
+        }
+
+        header .logo {
+            width: 195px; /* Ajuste o tamanho do logotipo conforme necessário */
+            height: auto;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #78aaff; /* Azul suave para o título */
+            text-transform: uppercase;
+        }
+
+        /* Barra de navegação */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        nav a {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #78aaff; /* Azul suave para os links */
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #333333; /* Cor escura no hover */
+            color: #fff;
+        }
+
+        /* Container dos cartões */
+        .cards-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            margin-bottom: 50px; /* Adicionado para criar o espaço entre os cartões e o texto abaixo */
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 190px;
+            height: 254px;
+            background: #1a2634; /* Azul escuro para os cartões */
+            border: 1px solid #1a2634; /* Borda suave */
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #eaeaea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card:hover {
+            border: 1px solid #78aaff; /* Azul suave para borda no hover */
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+        }
+
+        .card:active {
+            transform: scale(0.95);
+        }
+
+        /* Imagens dentro dos cards */
+        .card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+            border-radius: 50%;
+        }
+
+        /* Conteúdo principal */
+        .main-content {
+            max-width: 1100px;
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o fundo do conteúdo */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            text-align: center;
+            color: #eaeaea;
+        }
+
+        .main-content h2 {
+            color: #78aaff; /* Azul suave para os títulos */
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+        }
+
+        .main-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ddd; /* Cor suave para os parágrafos */
+            text-align: justify;
+        }
+
+        /* Rodapé */
+        footer {
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o rodapé */
+            color: #d8d8d8;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            font-size: 1rem;
+        }
+            /* Botões de redes sociais no rodapé */
+        .social-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #eaeaea; /* Cor padrão do texto */
+            background-color: #1a2634; /* Fundo azul escuro */
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-button:hover {
+            background-color: #333333; /* Fundo mais escuro no hover */
+             color: #fff; /* Texto branco no hover */
+            transform: scale(1.05);
+        }
+
+        .social-button:active {
+            transform: scale(0.95);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div>
+            <img src="Logotipo/Logotipo 3.png" alt="Logotipo Clube Do Automóvel" class="logo">
+            <h1>Clube Do Automóvel</h1>
+        </div>
+        <nav>
+            <a href="Home.HTML">Início</a>
+            <a href="Memorial.HTML">Memorial</a>
+            <a href="História Marca.HTML">História Marca</a>
+            <a href="Sobre.HTML">Sobre</a>
+            <a href="Mecânica.HTML">Mecânica</a>
+            <a href="Pistas.HTML">Pistas</a>
+            <a href="Corridas.HTML">Corridas</a>
+        </nav>
+    </header>
+
+    <!-- Cards de marcas de automóveis -->
+    <div class="cards-container">
+        <a href="Especificações Opel.HTML" class="card">
+            <img src="Logotipo/Opel.svg" alt="Opel">
+            Opel
+        </a>
+        <a href="Especificações Fiat.HTML" class="card">
+            <img src="Logotipo/Fiat.png" alt="Fiat">
+            Fiat
+        </a>
+        <a href="Especificações Volvo.HTML" class="card">
+            <img src="Logotipo/Volvo.png" alt="Volvo">
+            Volvo
+        </a>
+        <a href="Especificações Toyota.HTML" class="card">
+            <img src="Logotipo/Toyota.png" alt="Toyota">
+            Toyota
+        </a>
+        <a href="Especificações Lancia.HTML" class="card">
+            <img src="Logotipo/Lancia.png" alt="Lancia">
+            Lancia
+        </a>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <h2>Bem-vindo ao Clube Do Automóvel</h2>
+        <p>O <strong>Clube Do Automóvel</strong> é um espaço dedicado aos apaixonados por carros e aos entusiastas das marcas Opel, Fiat, Volvo, Toyota e Lancia. Com uma ampla gama de recursos, nosso clube oferece tudo o que você precisa saber sobre os últimos lançamentos, especificações detalhadas e comparações entre modelos. Cada marca tem sua história e características próprias, e estamos aqui para explorar cada uma delas em profundidade.</p>
+        <p>Nosso objetivo é fornecer informações precisas e atualizadas para que você possa tomar decisões informadas na escolha do seu próximo carro. Desde análises detalhadas de desempenho até inovações tecnológicas e avanços em sustentabilidade, o <strong>Clube Do Automóvel</strong> está comprometido em trazer o que há de melhor para você. Junte-se a nós nessa jornada pelo universo dos automóveis e descubra tudo sobre esses veículos de renome.</p>
+        <p>Seja para comparações técnicas, avaliações de desempenho ou apenas para compartilhar sua paixão por carros, o Clube Do Automóvel é o seu destino ideal. Explore cada marca, compare seus modelos e descubra qual deles é o mais adequado para o seu estilo de vida e suas necessidades.</p>
+    </div>
+
+    <!-- Rodapé -->
+<footer>
+    <p>&copy; 2024 Clube Do Automóvel - Todos os direitos reservados</p>
+    <div class="social-buttons">
+        <a href="https://discord.gg/bC968UAMvy" target="_blank" class="social-button discord">
+            <img src="Redes Sociais/Discord.png" alt="Discord">
+            Discord
+        </a>
+        <a href="https://x.com/automovel_86075" target="_blank" class="social-button twitter">
+            <img src="Redes Sociais/X.png" alt="Twitter">
+            Twitter
+        </a>
+        <a href="https://www.tiktok.com/@clube.do.automovel" target="_blank" class="social-button tiktok">
+            <img src="Redes Sociais/Tik Tok.png" alt="TikTok">
+            TikTok
+        </a>
+        <a href="https://www.instagram.com/clube.do.automovel/" target="_blank" class="social-button instagram">
+            <img src="Redes Sociais/Instagram.webp" alt="Instagram">
+            Instagram
+        </a>
+    </div>
+</footer>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corridas Famosas</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos do body com fundo azul escuro com gradiente */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            /* Aplicando um gradiente de azul escuro */
+            background: linear-gradient(135deg, #0b1a2b, #191970); /* Gradiente de azul escuro */
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* Cabeçalho */
+        header {
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o cabeçalho */
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            border-radius: 15px;
+            margin-bottom: 90px;
+            text-align: center;
+        }
+
+        header div {
+            display: flex;
+            align-items: center; /* Alinha o logotipo e o título verticalmente */
+            justify-content: center;
+            gap: 15px; /* Espaço entre o logotipo e o título */
+        }
+
+        header .logo {
+            width: 195px; /* Ajuste o tamanho do logotipo conforme necessário */
+            height: auto;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #78aaff; /* Azul suave para o título */
+            text-transform: uppercase;
+        }
+
+        /* Barra de navegação */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        nav a {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #78aaff; /* Azul suave para os links */
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #333333; /* Cor escura no hover */
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 40px;
+            color: #00bcd4;
+        }
+
+        /* Estilo dos cartões */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .card {
+            --background: linear-gradient(to left, #5801e4 0%, #5100d4 100%);
+            width: 190px;
+            height: 254px;
+            padding: 5px;
+            border-radius: 1rem;
+            overflow: hidden;
+            background: var(--background);
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card::after {
+            position: absolute;
+            content: "";
+            top: 30px;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            transform: scale(0.8);
+            filter: blur(25px);
+            background: var(--background);
+            transition: opacity 0.5s;
+        }
+
+        .card-info {
+            --color: #181818;
+            background: var(--color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.7rem;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card .title {
+            font-weight: bold;
+            font-size: 1.4em;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.9em;
+            color: #b5c7d3;
+            line-height: 1.4;
+        }
+
+        .card:hover::after {
+            opacity: 0;
+        }
+
+        .card:hover .card-info {
+            color: #5100d4;
+            transition: color 1s;
+        }
+
+         /* Rodapé */
+         footer {
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o rodapé */
+            color: #d8d8d8;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            font-size: 1rem;
+        }
+            /* Botões de redes sociais no rodapé */
+        .social-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #eaeaea; /* Cor padrão do texto */
+            background-color: #1a2634; /* Fundo azul escuro */
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-button:hover {
+            background-color: #333333; /* Fundo mais escuro no hover */
+             color: #fff; /* Texto branco no hover */
+            transform: scale(1.05);
+        }
+
+        .social-button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div>
+            <img src="Logotipo/Logotipo 3.png" alt="Logotipo Clube Do Automóvel" class="logo">
+            <h1>Clube Do Automóvel</h1>
+        </div>
+        <nav>
+            <a href="Home.HTML">Início</a>
+            <a href="Memorial.HTML">Memorial</a>
+            <a href="História Marca.HTML">História Marca</a>
+            <a href="Sobre.HTML">Sobre</a>
+            <a href="Mecânica.HTML">Mecânica</a>
+            <a href="Pistas.HTML">Pistas</a>
+            <a href="Corridas.HTML">Corridas</a>
+        </nav>
+    </header>
+
+
+    <h1>Tipo de Motor</h1>
+    <div class="cards">
+        <a href="lemans.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor 1 cilindro</p>
+                <p>A mais prestigiada corrida de resistência do mundo, realizada na França desde 1923.</p>
+            </div>
+        </a>
+        <a href="lemans.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor 2 cilindros em Linha</p>
+                <p>A mais prestigiada corrida de resistência do mundo, realizada na França desde 1923.</p>
+            </div>
+        </a>
+        <a href="lemans.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor 3 cilindros em Linha</p>
+                <p>A mais prestigiada corrida de resistência do mundo, realizada na França desde 1923.</p>
+            </div>
+        </a>
+        <a href="rally_dakar.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor 4 cilindros em Linha</p>
+                <p>Uma das corridas off-road mais difíceis do mundo, passando por terrenos extremos.</p>
+            </div>
+        </a>
+        <a href="dtm.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor 5 cilindros em Linha</p>
+                <p>Campeonato alemão de carros de turismo conhecido por suas competições acirradas.</p>
+            </div>
+        </a>
+        <a href="formula1.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor 6 cilindros em Linha</p>
+                <p>O ápice do automobilismo, com circuitos mundialmente famosos e tecnologia de ponta.</p>
+            </div>
+        </a>
+    </div>
+
+    <h1>Tipo de Motor em (V)</h1>
+    <div class="cards">
+        <a href="lemans.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor V2</p>
+                <p>A mais prestigiada corrida de resistência do mundo, realizada na França desde 1923.</p>
+            </div>
+        </a>
+        <a href="rally_dakar.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor V4</p>
+                <p>Uma das corridas off-road mais difíceis do mundo, passando por terrenos extremos.</p>
+            </div>
+        </a>
+        <a href="dtm.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor V6</p>
+                <p>Campeonato alemão de carros de turismo conhecido por suas competições acirradas.</p>
+            </div>
+        </a>
+        <a href="formula1.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor V8</p>
+                <p>O ápice do automobilismo, com circuitos mundialmente famosos e tecnologia de ponta.</p>
+            </div>
+        </a>
+        <a href="formula1.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor V10</p>
+                <p>O ápice do automobilismo, com circuitos mundialmente famosos e tecnologia de ponta.</p>
+            </div>
+        </a>
+        <a href="formula1.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor V12</p>
+                <p>O ápice do automobilismo, com circuitos mundialmente famosos e tecnologia de ponta.</p>
+            </div>
+        </a>
+    </div>
+
+    <h1>Tipo de Motor Boxer</h1>
+    <div class="cards">
+        <a href="lemans.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor Boxer 2 cilindros</p>
+                <p>A mais prestigiada corrida de resistência do mundo, realizada na França desde 1923.</p>
+            </div>
+        </a>
+        <a href="rally_dakar.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor Boxer 4 cilindros</p>
+                <p>Uma das corridas off-road mais difíceis do mundo, passando por terrenos extremos.</p>
+            </div>
+        </a>
+        <a href="dtm.html" class="card">
+            <div class="card-info">
+                <p class="title">Motor Boxer 6 cilindros</p>
+                <p>Campeonato alemão de carros de turismo conhecido por suas competições acirradas.</p>
+            </div>
+        </a>
+    </div>
+
+    <!-- Rodapé -->
+<footer>
+    <p>&copy; 2024 Clube Do Automóvel - Todos os direitos reservados</p>
+    <div class="social-buttons">
+        <a href="https://discord.gg/bC968UAMvy" target="_blank" class="social-button discord">
+            <img src="Redes Sociais/Discord.png" alt="Discord">
+            Discord
+        </a>
+        <a href="https://x.com/automovel_86075" target="_blank" class="social-button twitter">
+            <img src="Redes Sociais/X.png" alt="Twitter">
+            Twitter
+        </a>
+        <a href="https://www.tiktok.com/@clube.do.automovel" target="_blank" class="social-button tiktok">
+            <img src="Redes Sociais/Tik Tok.png" alt="TikTok">
+            TikTok
+        </a>
+        <a href="https://www.instagram.com/clube.do.automovel/" target="_blank" class="social-button instagram">
+            <img src="Redes Sociais/Instagram.webp" alt="Instagram">
+            Instagram
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>

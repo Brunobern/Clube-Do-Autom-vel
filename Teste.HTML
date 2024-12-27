@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube Do Automóvel Opel</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilo geral */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #000; /* Preto */
+            color: #FFD700; /* Dourado */
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        /* Menu de navegação */
+        nav {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            padding: 10px 20px;
+            background-color: #FF0000; /* Vermelho */
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #8B0000; /* Vermelho mais escuro */
+            transform: scale(1.1); /* Aumenta ligeiramente o tamanho */
+        }
+
+        /* Seção principal */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* Caixa de Pesquisa */
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            border: 2px solid #242424;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            padding: 10px;
+            background-color: #242424;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* Tabela de especificações */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table thead {
+            background-color: #FF0000; /* Vermelho */
+            color: white;
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Botão de detalhes */
+        .button {
+            display: inline-block; /* Necessário para animação */
+            padding: 8px 15px;
+            background-color: #FFD700; /* Dourado */
+            color: black;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Remove o sublinhado */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #FFC107; /* Dourado mais escuro */
+            transform: scale(1.1); /* Aumenta ligeiramente o tamanho */
+        }
+    </style>
+    <script>
+        function filterTable() {
+            const searchInput = document.getElementById('search-input').value.toLowerCase();
+            const tableRows = document.querySelectorAll('table tbody tr');
+
+            tableRows.forEach(row => {
+                const modelName = row.cells[0].textContent.toLowerCase();
+                if (modelName.includes(searchInput)) {
+                    row.style.display = ''; // Mostra a linha
+                } else {
+                    row.style.display = 'none'; // Esconde a linha
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Clube do Automóvel Opel</h1>
+        <p>A fonte completa para especificações e detalhes de veículos Opel</p>
+    </header>
+
+    <!-- Menu de Navegação -->
+    <nav>
+        <a href="Início.HTML">Início</a>
+        <a href="Especificações Opel.HTML">Especificações Opel</a>
+        <a href="Especificações Fiat.HTML">Especificações Fiat</a>
+        <a href="Especificações Volvo.HTML">Especificações Volvo</a>
+        <a href="Sobre.HTML">Sobre Nós</a>
+    </nav>
+
+    <div class="main-content" id="modelos">
+        <h2>Modelos Opel Disponíveis</h2>
+        
+        <!-- Caixa de Pesquisa -->
+        <div class="search-box">
+            <input type="text" id="search-input" onkeyup="filterTable()" placeholder="Pesquisar por modelo...">
+            <button onclick="filterTable()">🔍</button>
+        </div>
+
+        <!-- Tabela de Especificações -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Ano</th>
+                    <th>Motor</th>
+                    <th>Potência</th>
+                    <th>Consumo</th>
+                    <th>Aceleração (0-100 km/h)</th>
+                    <th>Detalhes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Opel Corsa A GSI</td>
+                    <td>1988</td>
+                    <td>1.6 L</td>
+                    <td>101 cv</td>
+                    <td>7.2 L/100km</td>
+                    <td>9.5 s</td>
+                    <td><a href="OPEL.Corsa.A GSI.HTML" class="button">Ver Mais</a></td>
+                </tr>
+                <tr>
+                    <td>Opel Corsa B GSI</td>
+                    <td>1993</td>
+                    <td>1.6 L</td>
+                    <td>109 cv</td>
+                    <td>7.8 L/100km</td>
+                    <td>9.5 s</td>
+                    <td><a href="OPEL.Corsa.B GSI.HTML" class="button">Ver Mais</a></td>
+                </tr>
+                <tr>
+                    <td>Opel Corsa C GSI</td>
+                    <td>2000</td>
+                    <td>1.8 L</td>
+                    <td>125 cv</td>
+                    <td>11.0 L/100km</td>
+                    <td>9.0 s</td>
+                    <td><a href="OPEL.Corsa.C GSI.HTML" class="button">Ver Mais</a></td>
+                </tr>
+                <tr>
+                    <td>Opel Corsa D OPC</td>
+                    <td>2011</td>
+                    <td>1.6 L</td>
+                    <td>192 cv</td>
+                    <td>9.8 L/100km</td>
+                    <td>7.2 s</td>
+                    <td><a href="OPEL.Corsa.D OPC.HTML" class="button">Ver Mais</a></td>
+                </tr>
+                <tr>
+                    <td>Opel Corsa E OPC</td>
+                    <td>2015</td>
+                    <td>1.6 L</td>
+                    <td>207 cv</td>
+                    <td>7.5 L/100km</td>
+                    <td>6.8 s</td>
+                    <td><a href="OPEL.CORSA.E OPC.HTML" class="button">Ver Mais</a></td>
+                </tr>
+                <tr>
+                    <td>Opel Corsa F Turbo</td>
+                    <td>2019</td>
+                    <td>1.2 L</td>
+                    <td>130 cv</td>
+                    <td>5.4 L/100km</td>
+                    <td>8.7 s</td>
+                    <td><a href="OPEL.Corsa.F.HTML" class="button">Ver Mais</a></td>
+                </tr>
+                <tr>
+                    <td>Opel Astra F GSI</td>
+                    <td>1994</td>
+                    <td>2.0 L</td>
+                    <td>150 cv</td>
+                    <td>8.6 L/100km</td>
+                    <td>8.0 s</td>
+                    <td><a href="OPEL.Astra.F GSI.HTML" class="button">Ver Mais</a></td>
+                </tr>
+                <tr>
+                    <td>Opel Manta 400</td>
+                    <td>1984</td>
+                    <td>2.4 L</td>
+                    <td>240 cv</td>
+                    <td>16.0 L/100km</td>
+                    <td>6.0 s</td>
+                    <td><a href="OPEL.Manta.HTML" class="button">Ver Mais</a></td>
+                </tr>
+                <tr>
+                    <td>Opel Ascona C</td>
+                    <td>1986</td>
+                    <td>2.0 L</td>
+                    <td>130 cv</td>
+                    <td>8.1 L/100km</td>
+                    <td>9.5 s</td>
+                    <td><a href="Opel Ascona C.HTML" class="button">Ver Mais</a></td>
+                </tr>
+                <tr>
+                    <td>Opel Monza A2</td>
+                    <td>1983</td>
+                    <td>3.0 L</td>
+                    <td>180 cv</td>
+                    <td>7.3 L/100km</td>
+                    <td>8.5 s</td>
+                    <td><a href="OPEL.Monza A2.HTML" class="button">Ver Mais</a></td>
+                </tr>
+                <tr>
+                    <td>Opel Corsa B Diesel</td>
+                    <td>1998</td>
+                    <td>1.5 L</td>
+                    <td>67 cv</td>
+                    <td>6.3 L/100km</td>
+                    <td>17.5 s</td>
+                    <td><a href="OPEL.Corsa.B 1.7D.HTML" class="button">Ver Mais</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

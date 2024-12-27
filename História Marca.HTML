@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>História das Marcas - Clube Do Automóvel</title>
+
+    <!-- Adicionando o favicon -->
+    <link rel="icon" href="Logotipo/Logotipo 3.png" type="image/x-icon">
+    
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos do body com fundo gradiente */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0b1a2b, #191970); /* Gradiente Azul Meia-noite */
+            color: #e0e0e0; /* Texto claro para contraste */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Cabeçalho */
+        header {
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o cabeçalho */
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            border-radius: 15px;
+            margin-bottom: 90px;
+            text-align: center;
+        }
+
+        header div {
+            display: flex;
+            align-items: center; /* Alinha o logotipo e o título verticalmente */
+            justify-content: center;
+            gap: 15px; /* Espaço entre o logotipo e o título */
+        }
+
+        header .logo {
+            width: 195px; /* Ajuste o tamanho do logotipo conforme necessário */
+            height: auto;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #78aaff; /* Azul suave para o título */
+            text-transform: uppercase;
+        }
+
+        /* Barra de navegação */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        nav a {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #78aaff; /* Azul suave para os links */
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #333333; /* Cor escura no hover */
+            color: #fff;
+        }
+
+        /* Container principal */
+        .main-content {
+            max-width: 1100px;
+            width: 100%;
+            background-color: #1a2634; /* Fundo escuro com transparência */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            text-align: center;
+        }
+
+        .main-content h2 {
+            color: #78aaff; /* Azul claro para título */
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .marca {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #1a2634;
+            transition: background-color 0.3s;
+            justify-content: space-between;
+        }
+
+        .marca:hover {
+            background-color: #1a2634; /* Fundo mais claro no hover */
+        }
+
+        .marca img {
+            width: 120px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        .marca-info {
+            max-width: 700px;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .marca-info h3 {
+            font-size: 1.5rem;
+            color: #78aaff; /* Azul claro para subtítulo */
+            margin-bottom: 5px;
+        }
+
+        .marca-info p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #d3d3d3; /* Cor mais suave para o texto */
+        }
+
+        /* Botões */
+        .marca-buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .marca-button {
+            background-color: #78aaff; /* Azul claro para os botões */
+            color: #1a2634; /* Cor de texto escura */
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px 0;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .marca-button:hover {
+            background-color: #78aaff; /* Azul mais escuro no hover */
+            transform: scale(1.05);
+        }
+
+        /* Botão de Voltar */
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #78aaff; /* Azul claro para o botão de voltar */
+            color: #1a2634;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #78aaff;
+            transform: scale(1.05);
+        }
+
+        /* Rodapé */
+        footer {
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o rodapé */
+            color: #d8d8d8;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            font-size: 1rem;
+        }
+            /* Botões de redes sociais no rodapé */
+        .social-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #eaeaea; /* Cor padrão do texto */
+            background-color: #1a2634; /* Fundo azul escuro */
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-button:hover {
+            background-color: #333333; /* Fundo mais escuro no hover */
+             color: #fff; /* Texto branco no hover */
+            transform: scale(1.05);
+        }
+
+        .social-button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div>
+            <img src="Logotipo/Logotipo 3.png" alt="Logotipo Clube Do Automóvel" class="logo">
+            <h1>CLUBE DO Automóvel</h1>
+        </div>
+        <nav>
+            <a href="Home.HTML">Início</a>
+            <a href="Memorial.HTML">Memorial</a>
+            <a href="História Marca.HTML">História Marca</a>
+            <a href="Sobre.HTML">Sobre</a>
+            <a href="Mecânica.HTML">Mecânica</a>
+            <a href="Pistas.HTML">Pistas</a>
+            <a href="Corridas.HTML">Corridas</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <h2>As Marcas que Moldaram o Automobilismo</h2>
+
+        <!-- Opel -->
+        <div class="marca">
+            <img src="Logotipo/Opel.webp" alt="Logo Opel">
+            <div class="marca-info">
+                <h3>Opel</h3>
+                <p>A Opel foi fundada em 1862 por Adam Opel, inicialmente como uma fabricante de máquinas de costura. A empresa começou a produzir automóveis em 1899 e tornou-se uma das maiores fabricantes de carros da Alemanha. Hoje, é conhecida por seus veículos confiáveis e acessíveis, e é uma marca do grupo Stellantis.</p>
+            </div>
+            <div class="marca-buttons">
+                <a href="História Opel.HTML" class="marca-button">Saiba Mais</a>
+            </div>
+        </div>        
+
+        <!-- Fiat -->
+        <div class="marca">
+            <img src="Logotipo/Fiat.png" alt="Logo Fiat">
+            <div class="marca-info">
+                <h3>Fiat</h3>
+                <p>A Fiat foi fundada em 1899 em Turim, Itália. Reconhecida por seus veículos inovadores e compactos, a marca é uma das mais icônicas da indústria automotiva. Desde o popular Fiat 500 até modelos modernos, a Fiat desempenha um papel significativo no mercado europeu e mundial.</p>
+            </div>
+            <div class="marca-buttons">
+                <a href="História Fiat.HTML" class="marca-button">Saiba Mais</a>
+            </div>
+        </div>        
+
+        <!-- Volvo -->
+        <div class="marca">
+            <img src="Logotipo/Volvo.png" alt="Logo Volvo">
+            <div class="marca-info">
+                <h3>Volvo</h3>
+                <p>A Volvo foi fundada em 1927 na Suécia e é amplamente reconhecida por sua dedicação à segurança e qualidade. A marca introduziu muitos avanços, incluindo o cinto de segurança de três pontos. Seus carros são famosos por sua durabilidade e inovação tecnológica.</p>
+            </div>
+            <div class="marca-buttons">
+                <a href="#" class="marca-button">Saiba Mais</a>
+            </div>
+        </div>        
+
+        <!-- Toyota -->
+        <div class="marca">
+            <img src="Logotipo/Toyota.png" alt="Logo Toyota">
+            <div class="marca-info">
+                <h3>Toyota</h3>
+                <p>A Toyota, fundada em 1937 no Japão, é uma das maiores fabricantes de automóveis do mundo. A marca é pioneira em tecnologia híbrida com o lançamento do Toyota Prius e é conhecida por sua qualidade, confiabilidade e eficiência.</p>
+            </div>
+            <div class="marca-buttons">
+                <a href="#" class="marca-button">Saiba Mais</a>
+            </div>
+        </div>        
+
+        <!-- Lancia -->
+        <div class="marca">
+            <img src="Logotipo/Lancia.png" alt="Logo Lancia">
+            <div class="marca-info">
+                <h3>Lancia</h3>
+                <p>A Lancia foi fundada em 1906 na Itália por Vincenzo Lancia. Reconhecida por sua elegância e inovação, a marca é famosa por seu sucesso nos ralis, especialmente com o modelo Lancia Delta Integrale, que dominou o Campeonato Mundial de Rally nos anos 1980 e 1990.</p>
+            </div>
+            <div class="marca-buttons">
+                <a href="#" class="marca-button">Saiba Mais</a>
+            </div>
+        </div>
+    </div>
+        
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 Clube Do Automóvel - Todos os direitos reservados</p>
+        <div class="social-buttons">
+            <a href="https://discord.gg/bC968UAMvy" target="_blank" class="social-button discord">
+                <img src="Redes Sociais/Discord.png" alt="Discord">
+                Discord
+            </a>
+            <a href="https://x.com/automovel_86075" target="_blank" class="social-button twitter">
+                <img src="Redes Sociais/X.png" alt="Twitter">
+                Twitter
+            </a>
+            <a href="https://www.tiktok.com/@clube.do.automovel" target="_blank" class="social-button tiktok">
+                <img src="Redes Sociais/Tik Tok.png" alt="TikTok">
+                TikTok
+            </a>
+            <a href="https://www.instagram.com/clube.do.automovel/" target="_blank" class="social-button instagram">
+                <img src="Redes Sociais/Instagram.webp" alt="Instagram">
+                Instagram
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>

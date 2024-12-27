@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistas Famosas do Automobilismo</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos do body com fundo azul escuro com gradiente */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            /* Aplicando um gradiente de azul escuro */
+            background: linear-gradient(135deg, #0b1a2b, #191970); /* Gradiente de azul escuro */
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* Cabeçalho */
+        header {
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o cabeçalho */
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            border-radius: 15px;
+            margin-bottom: 90px;
+            text-align: center;
+        }
+
+        header div {
+            display: flex;
+            align-items: center; /* Alinha o logotipo e o título verticalmente */
+            justify-content: center;
+            gap: 15px; /* Espaço entre o logotipo e o título */
+        }
+
+        header .logo {
+            width: 195px; /* Ajuste o tamanho do logotipo conforme necessário */
+            height: auto;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #78aaff; /* Azul suave para o título */
+            text-transform: uppercase;
+        }
+
+        /* Barra de navegação */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        nav a {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #78aaff; /* Azul suave para os links */
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #333333; /* Cor escura no hover */
+            color: #fff;
+        }
+
+        /* Estilo dos cartões */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            width: 190px;
+            height: 280px;
+            background-color: #1a2634;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9);
+        }
+
+        .tools {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .circle {
+            padding: 0 4px;
+        }
+
+        .box {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .red { background-color: #ff605c; }
+        .yellow { background-color: #ffbd44; }
+        .green { background-color: #00ca4e; }
+
+        .card__content {
+            padding: 10px;
+            text-align: left;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card__content h2 {
+            font-size: 1.4em;
+            margin: 0 0 10px;
+            text-align: center;
+        }
+
+        .card__content p {
+            font-size: 1em;
+            color: #b5c7d3;
+            text-align: center;
+        }
+
+         /* Rodapé */
+         footer {
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o rodapé */
+            color: #d8d8d8;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            font-size: 1rem;
+        }
+            /* Botões de redes sociais no rodapé */
+        .social-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #eaeaea; /* Cor padrão do texto */
+            background-color: #1a2634; /* Fundo azul escuro */
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-button:hover {
+            background-color: #333333; /* Fundo mais escuro no hover */
+             color: #fff; /* Texto branco no hover */
+            transform: scale(1.05);
+        }
+
+        .social-button:active {
+            transform: scale(0.95);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div>
+            <img src="Logotipo/Logotipo 3.png" alt="Logotipo Clube Do Automóvel" class="logo">
+            <h1>Clube Do Automóvel</h1>
+        </div>
+        <nav>
+            <a href="Home.HTML">Início</a>
+            <a href="Memorial.HTML">Memorial</a>
+            <a href="História Marca.HTML">História Marca</a>
+            <a href="Sobre.HTML">Sobre</a>
+            <a href="Mecânica.HTML">Mecânica</a>
+            <a href="Pistas.HTML">Pistas</a>
+            <a href="Corridas.HTML">Corridas</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="cards">
+            <div class="card" onclick="window.location.href='Monza.HTML'">
+                <div class="tools">
+                    <div class="circle"><span class="red box"></span></div>
+                    <div class="circle"><span class="yellow box"></span></div>
+                    <div class="circle"><span class="green box"></span></div>
+                </div>
+                <div class="card__content">
+                    <h2>Monza</h2>
+                    <p>Famosa por suas longas retas e alta velocidade, localizada na Itália.</p>
+                </div>
+            </div>
+            <div class="card" onclick="window.location.href='silverstone.html'">
+                <div class="tools">
+                    <div class="circle"><span class="red box"></span></div>
+                    <div class="circle"><span class="yellow box"></span></div>
+                    <div class="circle"><span class="green box"></span></div>
+                </div>
+                <div class="card__content">
+                    <h2>Silverstone</h2>
+                    <p>Uma das mais tradicionais pistas do calendário da Fórmula 1.</p>
+                </div>
+            </div>
+            <div class="card" onclick="window.location.href='spa.html'">
+                <div class="tools">
+                    <div class="circle"><span class="red box"></span></div>
+                    <div class="circle"><span class="yellow box"></span></div>
+                    <div class="circle"><span class="green box"></span></div>
+                </div>
+                <div class="card__content">
+                    <h2>Spa-Francorchamps</h2>
+                    <p>Conhecida pela Eau Rouge e suas desafiantes mudanças de elevação.</p>
+                </div>
+            </div>
+            <div class="card" onclick="window.location.href='spa.html'">
+                <div class="tools">
+                    <div class="circle"><span class="red box"></span></div>
+                    <div class="circle"><span class="yellow box"></span></div>
+                    <div class="circle"><span class="green box"></span></div>
+                </div>
+                <div class="card__content">
+                    <h2>Spa-Francorchamps</h2>
+                    <p>Conhecida pela Eau Rouge e suas desafiantes mudanças de elevação.</p>
+                </div>
+            </div>
+            <div class="card" onclick="window.location.href='spa.html'">
+                <div class="tools">
+                    <div class="circle"><span class="red box"></span></div>
+                    <div class="circle"><span class="yellow box"></span></div>
+                    <div class="circle"><span class="green box"></span></div>
+                </div>
+                <div class="card__content">
+                    <h2>Spa-Francorchamps</h2>
+                    <p>Conhecida pela Eau Rouge e suas desafiantes mudanças de elevação.</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="cards">
+                    <div class="card" onclick="window.location.href='monza.html'">
+                        <div class="tools">
+                            <div class="circle"><span class="red box"></span></div>
+                            <div class="circle"><span class="yellow box"></span></div>
+                            <div class="circle"><span class="green box"></span></div>
+                        </div>
+                        <div class="card__content">
+                            <h2>Monza</h2>
+                            <p>Famosa por suas longas retas e alta velocidade, localizada na Itália.</p>
+                        </div>
+                    </div>
+                    <div class="card" onclick="window.location.href='silverstone.html'">
+                        <div class="tools">
+                            <div class="circle"><span class="red box"></span></div>
+                            <div class="circle"><span class="yellow box"></span></div>
+                            <div class="circle"><span class="green box"></span></div>
+                        </div>
+                        <div class="card__content">
+                            <h2>Silverstone</h2>
+                            <p>Uma das mais tradicionais pistas do calendário da Fórmula 1.</p>
+                        </div>
+                    </div>
+                    <div class="card" onclick="window.location.href='spa.html'">
+                        <div class="tools">
+                            <div class="circle"><span class="red box"></span></div>
+                            <div class="circle"><span class="yellow box"></span></div>
+                            <div class="circle"><span class="green box"></span></div>
+                        </div>
+                        <div class="card__content">
+                            <h2>Spa-Francorchamps</h2>
+                            <p>Conhecida pela Eau Rouge e suas desafiantes mudanças de elevação.</p>
+                        </div>
+                    </div>
+                    <div class="card" onclick="window.location.href='spa.html'">
+                        <div class="tools">
+                            <div class="circle"><span class="red box"></span></div>
+                            <div class="circle"><span class="yellow box"></span></div>
+                            <div class="circle"><span class="green box"></span></div>
+                        </div>
+                        <div class="card__content">
+                            <h2>Spa-Francorchamps</h2>
+                            <p>Conhecida pela Eau Rouge e suas desafiantes mudanças de elevação.</p>
+                        </div>
+                    </div>
+                    <div class="card" onclick="window.location.href='spa.html'">
+                        <div class="tools">
+                            <div class="circle"><span class="red box"></span></div>
+                            <div class="circle"><span class="yellow box"></span></div>
+                            <div class="circle"><span class="green box"></span></div>
+                        </div>
+                        <div class="card__content">
+                            <h2>Spa-Francorchamps</h2>
+                            <p>Conhecida pela Eau Rouge e suas desafiantes mudanças de elevação.</p>
+                        </div>
+                    </div>
+        
+
+        <!-- Rodapé -->
+        <footer>
+            <p>&copy; 2024 Clube Do Automóvel - Todos os direitos reservados</p>
+            <div class="social-buttons">
+                <a href="https://discord.gg/bC968UAMvy" target="_blank" class="social-button discord">
+                    <img src="Redes Sociais/Discord.png" alt="Discord">
+                    Discord
+                </a>
+                <a href="https://x.com/automovel_86075" target="_blank" class="social-button twitter">
+                    <img src="Redes Sociais/X.png" alt="Twitter">
+                    Twitter
+                </a>
+                <a href="https://www.tiktok.com/@clube.do.automovel" target="_blank" class="social-button tiktok">
+                    <img src="Redes Sociais/Tik Tok.png" alt="TikTok">
+                    TikTok
+                </a>
+                <a href="https://www.instagram.com/clube.do.automovel/" target="_blank" class="social-button instagram">
+                    <img src="Redes Sociais/Instagram.webp" alt="Instagram">
+                    Instagram
+                </a>
+            </div>
+        </footer>
+</body>
+</html>

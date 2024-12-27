@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube Do Automóvel Opel</title>
+
+    <!-- Adicionando o favicon -->
+    <link rel="icon" href="Logotipo/Logotipo 3.png" type="image/x-icon">
+
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilo geral */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0b1a2b, #191970); /* Gradiente azul meia-noite */
+            color: #E2E8F0; /* Texto suave */
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #1a2634; /* Azul vibrante */
+            color: #78aaff; /* Branco suave */
+            padding: 20px 30px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        /* Relógio */
+        .clock {
+            font-size: 2rem;
+            color: #78aaff; /* Amarelo vibrante */
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Menu de Navegação */
+        nav {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .animated-button {
+            position: relative;
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            font-size: 16px;
+            background-color: #1a2634; /* Cinza escuro */
+            color: #FAFAFA; /* Branco suave */
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 0 0 2px #ffffff20;
+            cursor: pointer;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .animated-button span:last-child {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: #78aaff;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .animated-button span:first-child {
+            position: relative;
+            z-index: 1;
+        }
+
+        .animated-button:hover {
+            box-shadow: 0 0 0 5px #78aaff;
+            color: #ffffff;
+        }
+
+        .animated-button:active {
+            transform: scale(0.95);
+        }
+
+        .animated-button:hover span:last-child {
+            width: 150px;
+            height: 150px;
+            opacity: 1;
+        }
+
+        /* Cartões */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px; /* Adiciona um espaçamento entre as linhas de cartões */
+        }
+
+        .card {
+            box-sizing: border-box;
+            width: 190px;
+            height: 270px; /* Mantém a altura */
+            background: #1a2634; /* Escurecendo o cinza */
+            border: 1px solid #1a2634;
+            box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+            backdrop-filter: blur(6px);
+            border-radius: 17px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            font-weight: bolder;
+            color: white; /* Cor do texto branco */
+            overflow: hidden; /* Garante que qualquer excesso de imagem não ultrapasse o cartão */
+            text-decoration: none; /* Remove sublinhado */
+        }
+
+        .card h3, .card p {
+            color: white; /* Garantir que o texto dentro do cartão fique branco */
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%; /* Ajuste para ocupar 100% do cartão */
+            object-fit: cover; /* Preenche totalmente o cartão sem distorcer a imagem */
+            border-radius: 17px 17px 0 0; /* Arredonda as bordas superiores da imagem */
+            margin-bottom: 10px; /* Adiciona um pequeno espaçamento entre a imagem e o texto */
+        }
+
+        .card:hover {
+            border: 1px solid #1a2634;
+            transform: scale(1.05);
+        }
+
+        .card:active {
+            transform: scale(0.95) rotateZ(1.7deg);
+        }
+
+        /* Caixa de Pesquisa */
+        .textInputWrapper {
+            position: relative;
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        .textInput {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #78aaff;
+            border-radius: 25px;
+            background-color: #1a2634;
+            color: #F7FAFC;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .textInput:focus {
+            border-color: #78aaff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>CLUBE DO AUTOMÓVEL LANCIA</h1>
+        <p>A fonte completa para especificações e detalhes de veículos Lancia</p>
+        <!-- Relógio -->
+        <div class="clock" id="clock"></div>
+    </header>
+
+    <!-- Menu de Navegação -->
+    <nav>
+        <a href="Home.HTML" class="animated-button"><span>Início</span><span></span></a>
+        <a href="Especificações Opel.HTML" class="animated-button"><span>Opel</span><span></span></a>
+        <a href="Especificações Fiat.HTML" class="animated-button"><span>Fiat</span><span></span></a>
+        <a href="Especificações Volvo.HTML" class="animated-button"><span>Volvo</span><span></span></a>
+        <a href="Especificações Toyota.HTML" class="animated-button"><span>Toyota</span><span></span></a>
+        <a href="Especificações Lancia.HTML" class="animated-button"><span>Lancia</span><span></span></a>
+    </nav>
+
+    <!-- Caixa de Pesquisa -->
+    <div class="textInputWrapper">
+        <input id="searchInput" class="textInput" type="text" placeholder="Pesquisar Modelos Lancia">
+    </div>
+
+    <!-- Primeira Linha de Cartões -->
+    <div class="cards-container">
+        <a href="LANCIA DELTA.HTML" class="card">
+            <img src="Imagens Lancia/Lancia Delta.jpg" alt="Lancia Delta">
+            <h3>Lancia Delta</h3>
+            <p>( Lancia Delta Integrale )</p>
+        </a>
+
+        <a href="LANCIA DELTA S4.HTML" class="card">
+            <img src="Imagens Lancia/Lancia Delta S4.jpg" alt="Lancia Delta S4">
+            <h3>Lancia Delta</h3>
+            <p>( Lancia Delta S4 )</p>
+        </a>
+
+        <a href="Lancia Y10.HTML" class="card">
+            <img src="Imagens Lancia/Lancia Y10.jpg" alt="Lancia Y10">
+            <h3>Lancia Y10</h3>
+            <p>( Lancia Y10 Phase )</p>
+        </a>
+
+        <a href="LANCIA Dedra.HTML" class="card">
+            <img src="Imagens Lancia/Lancia Dedra.jpg" alt="Lancia Dedra HF">
+            <h3>Lancia Dedra</h3>
+            <p>( Lancia Dedra HF )</p>
+        </a>
+        
+        <a href="Lancia Rally 037.HTML" class="card">
+            <img src="Imagens Lancia/Lancia 037.jpg" alt="Lancia Rally 037">
+            <h3>Lancia 037</h3>
+            <p>( Lancia Rally 037 )</p>
+        </a>
+
+        <a href="LANCIA Monte Carlo.HTML" class="card">
+            <img src="Imagens Lancia/Lancia Monte Carlo.jpg" alt="Lancia Monte Carlo">
+            <h3>Lancia Monte Carlo</h3>
+            <p>( Lancia Monte Carlo )</p>
+        </a>
+
+    </div>
+
+    <!-- Segunda Linha de Cartões -->
+    <div class="cards-container">
+        <a href="LANCIA FÚLVIA.HTML" class="card">
+            <img src="Imagens Lancia/Lancia Fúlvia.jpg" alt="Lancia Fulvia HF Coupé">
+            <h3>Lancia Fulvia</h3>
+            <p>( Lancia Fulvia HF )</p>
+        </a>
+
+    </div>
+
+    <script>
+        // Função para exibir o relógio em tempo real
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours().toString().padStart(2, '0');
+            var minutes = now.getMinutes().toString().padStart(2, '0');
+            var seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('clock').textContent = hours + ':' + minutes + ':' + seconds;
+        }
+
+        setInterval(updateClock, 0);
+    </script>
+
+<script>
+
+    // Função para filtrar os cartões com base na pesquisa
+    document.getElementById('searchInput').addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('p').textContent.toLowerCase();
+            
+            // Verifica se o texto pesquisado aparece no título ou na descrição
+            if (title.includes(query) || description.includes(query)) {
+                card.style.display = "flex"; // Mostra o cartão
+            } else {
+                card.style.display = "none"; // Esconde o cartão
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

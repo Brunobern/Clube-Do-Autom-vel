@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube Do Automóvel - Especificações Opel Corsa B GSI</title>
+
+    <!-- Adicionando o favicon -->
+    <link rel="icon" href="Logotipo/Logotipo 3.png" type="image/x-icon">
+
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos da página */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Animação de fade-in para o corpo */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilos do cabeçalho */
+        header {
+            width: 100%;
+            background-color: #333;
+            color: #d1d1d1;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: slideInDown 1s ease-in-out forwards;
+            border: 1px solid #555;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: #d1d1d1;
+            font-size: 1rem;
+        }
+
+        /* Animação de slide-down para o cabeçalho */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilo da seção de conteúdo */
+        .content {
+            max-width: 800px;
+            width: 100%;
+            background-color: #2b2b2b;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out 0.5s forwards;
+            border: 1px solid #444;
+        }
+
+        /* Animação de fade-in com leve movimento para cima */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content h2 {
+            color: #d1d1d1;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            animation: popUp 0.6s ease-in-out;
+        }
+
+        /* Animação de leve pop-up */
+        @keyframes popUp {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .car-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .car-info img {
+            max-width: 250px;
+            margin-right: 20px;
+            border-radius: 10px;
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 0px 10px rgba(172, 172, 172, 0.5);
+        }
+
+        .car-info img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px rgba(172, 172, 172, 0.5);
+        }
+
+        .spec-list {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            opacity: 0;
+            animation: fadeInList 0.8s ease-in-out 0.6s forwards;
+        }
+
+        /* Animação para cada item da lista */
+        @keyframes fadeInList {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .spec-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #2b2b2b;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .spec-list li strong {
+            color: #d1d1d1;
+        }
+
+        /* Estilo de botões */
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button-container a button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            background-color: #d1d1d1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .button-container a button:hover {
+            transform: scale(1.1);
+            background-color: #d1d1d1;
+        }
+
+        .button-container a button:active {
+            transform: scale(0.95);
+        }
+
+        /* Estilo do player de áudio */
+        .audio-container {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 1s forwards;
+        }
+
+        .audio-container h3 {
+            color: #d1d1d1;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 5px;
+            margin-top: 10px;
+            background-color: #2b2b2b; /* Cor do fundo igual ao cenário */
+            border: none; /* Remove qualquer borda */
+            outline: none; /* Remove o contorno */
+            box-shadow: none; /* Remove a sombra */
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Especificações da Marca Lancia</h1>
+        <p>Explore as especificações técnicas e características dos veículos Lancia.</p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <section class="content">
+        <h2>Ficha Técnica:</h2>
+        <div class="car-info">
+            <img src="Imagens Lancia/Lancia Y10.jpg" alt="Lancia Delta Integrale Evoluzione">
+            <ul class="spec-list">
+                <li><strong>Modelo:</strong> Lancia Y10 Phase 3 1.3 i.e.</li>
+                <li><strong>Motor:</strong> Motor 4 em Linha 8v 1301 cm³</li>
+                <li><strong>Potência:</strong> 72 Cv / 100 Nm</li>
+                <li><strong>Consumo:</strong> 6.9 L/100km</li>
+                <li><strong>Transmissão:</strong> Manual de 5 velocidades / 170 Km/h / FWD</li>
+                <li><strong>Aceleração:</strong> 0-100 km/h em 12.5s</li>
+                <li><strong>Turbo:</strong> Naturalemente Aspirado</li>
+                <li><strong>Combustível:</strong> Gasolina</li>
+            </ul>
+        </div>
+
+        <!-- Seção de Áudio -->
+        <div class="audio-container">
+            <h3>Ouça o Som do Motor 138B2.046</h3>
+            <audio controls>
+                <source src="audio/Lancia Y10.mp3" type="audio/mp3">
+                <source src="audio/Lancia Y10.mp3" type="audio/ogg">
+                Seu navegador não suporta a tag de áudio.
+            </audio>
+        </div>
+
+        <!-- Botão de Voltar -->
+        <div class="button-container">
+            <a href="Especificações Lancia.HTML"><button>Voltar</button></a>
+        </div>
+    </section>
+
+</body>
+</html>

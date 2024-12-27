@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube Do Automóvel - Especificações Opel Corsa A GSI</title>
+
+    <!-- Adicionando o favicon -->
+    <link rel="icon" href="Logotipo/Logotipo 3.png" type="image/x-icon">
+
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos da página */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0b1a2b, #191970);
+            color: #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Animação de fade-in para o corpo */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilos do cabeçalho */
+        header {
+            width: 100%;
+            background-color: #1a2634;
+            color: #d1d1d1;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: slideInDown 1s ease-in-out forwards;
+            border: 1px solid #1a2634;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: #d1d1d1;
+            font-size: 1rem;
+        }
+
+        /* Animação de slide-down para o cabeçalho */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilo da seção de conteúdo */
+        .content {
+            max-width: 800px;
+            width: 100%;
+            background-color: #1a2634;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out 0.5s forwards;
+            border: 1px solid #1a2634;
+        }
+
+        /* Animação de fade-in com leve movimento para cima */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content h2 {
+            color: #d1d1d1;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            animation: popUp 0.6s ease-in-out;
+        }
+
+        /* Animação de leve pop-up */
+        @keyframes popUp {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .car-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .car-info img {
+            max-width: 250px;
+            margin-right: 20px;
+            border-radius: 10px;
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 0px 10px rgb(192, 192, 192);
+        }
+
+        .car-info img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px rgb(192, 192, 192);
+        }
+
+        .spec-list {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            opacity: 0;
+            animation: fadeInList 0.8s ease-in-out 0.6s forwards;
+        }
+
+        /* Animação para cada item da lista */
+        @keyframes fadeInList {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .spec-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #2b2b2b;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .spec-list li strong {
+            color: #d1d1d1;
+        }
+
+        .car-description {
+            margin-top: 20px;
+            line-height: 1.8;
+            font-size: 1rem;
+            text-align: justify;
+            color: #d1d1d1;
+        }
+
+        .car-description p {
+            margin-bottom: 15px;
+        }
+
+        /* Estilo de botões */
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button-container a button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            background-color: #d1d1d1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .button-container a button:hover {
+            transform: scale(1.1);
+            background-color: #d1d1d1;
+        }
+
+        .button-container a button:active {
+            transform: scale(0.95);
+        }
+
+        /* Estilo do player de áudio */
+        .audio-container {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 1s forwards;
+        }
+
+        .audio-container h3 {
+            color: #d1d1d1;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 5px;
+            margin-top: 10px;
+            background-color: #1a2634; 
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .car-description {
+            margin-top: 20px;
+            line-height: 1.8;
+            font-size: 1rem;
+            text-align: justify;
+            color: #d1d1d1;
+        }
+
+        .car-description p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Especificações da Marca Opel</h1>
+        <p>Explore as especificações técnicas e características dos veículos Opel.</p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <section class="content">
+        <h2>Ficha Técnica:</h2>
+        <div class="car-info">
+            <img src="Imagens/Opel Corsa B GSI.jpeg" alt="Opel Corsa B GSI">
+            <ul class="spec-list">
+                <li><strong>Modelo:</strong> Opel Corsa B GSI</li>
+                <li><strong>Motor:</strong> Motor 4 em Linha 16v 1598 cm³</li>
+                <li><strong>Potência:</strong> 109 Cv / 150 Nm</li>
+                <li><strong>Consumo:</strong> 7.8 L/100km</li>
+                <li><strong>Transmissão:</strong> Manual de 5 velocidades / 195 Km/h / FWD</li>
+                <li><strong>Aceleração:</strong> 0-100 km/h em 9.5s</li>
+                <li><strong>Turbo:</strong> Naturalmente Aspirado</li>
+                <li><strong>Combustível:</strong> Gasolina</li>
+            </ul>
+        </div>
+
+        <section class="content">
+            <h2>Sobre o Opel Corsa A GSI:</h2>
+            <div class="car-description">
+                <p>O Opel Corsa B GSI é um ícone entre os compactos esportivos dos anos 90, lembrado até hoje por sua combinação de desempenho e praticidade. Voltado para entusiastas que buscavam emoção em um carro acessível, o modelo se destacou como uma das versões mais desejadas da linha Corsa B, conquistando uma legião de fãs ao redor do mundo.
+
+                    O destaque do Corsa B GSI é o motor 1.6 litro de 16 válvulas, capaz de entregar cerca de 106 cavalos de potência. Para um carro compacto e leve, isso resulta em um desempenho ágil e divertido, com aceleração rápida e uma experiência de condução esportiva. Equipado com uma suspensão ajustada para oferecer maior estabilidade e controle, o GSI também conta com uma direção mais responsiva, que o diferencia das versões mais básicas. Ele é perfeito para quem gosta de explorar estradas sinuosas ou simplesmente apreciar uma condução mais dinâmica no dia a dia.
+                    
+                    O design é outro ponto marcante. Embora compartilhe a carroceria básica do Corsa B, o GSI ganha elementos visuais exclusivos, como para-choques esportivos, saias laterais, aerofólio traseiro e rodas de liga leve que reforçam sua aparência robusta e dinâmica. No interior, há toques que acentuam sua proposta esportiva, como bancos esportivos, detalhes em vermelho no painel e um volante específico para a versão. Apesar disso, ele mantém a praticidade do modelo base, com espaço para quatro ocupantes e um porta-malas suficiente para as necessidades diárias.
+                    
+                    Na estrada, o GSI entrega uma performance cativante para seu segmento. O motor responde bem em altas rotações, e a combinação com uma transmissão manual bem escalonada permite explorar ao máximo o potencial do carro. Além disso, o peso reduzido do Corsa B contribui para uma dirigibilidade ágil e divertida, especialmente em circuitos urbanos. Contudo, o ajuste esportivo da suspensão pode sacrificar um pouco do conforto em pisos irregulares.
+                    
+                    O custo de propriedade do Corsa B GSI reflete seu posicionamento esportivo. Embora o consumo de combustível seja aceitável, especialmente considerando sua performance, peças e manutenção podem ser um pouco mais caras em comparação às versões convencionais. Além disso, encontrar um exemplar bem cuidado nos dias de hoje é um desafio, já que muitos foram modificados ou maltratados ao longo dos anos.
+
+                    Minha opinião? O Opel Corsa B GSI é um clássico moderno que combina nostalgia com diversão ao volante. Ele representa uma época em que os esportivos compactos eram acessíveis e emocionantes, entregando uma experiência de direção pura e envolvente. Para quem é fã de carros dos anos 90 ou procura um pequeno esportivo com personalidade, o GSI é uma escolha que vale a pena, desde que esteja em boas condições. É um verdadeiro exemplo de como a Opel soube criar carros que agradavam tanto ao coração quanto à razão.
+                </p>
+            </div>
+        </section>
+
+        <!-- Seção de Áudio -->
+        <div class="audio-container">
+            <h3>Ouça o Som do Motor C16XE </h3>
+            <audio controls>
+                <source src="audio/Opel corsa b gsi.mp3" type="audio/mp3">
+                <source src="audio/Opel corsa b gsi.mp3" type="audio/ogg">
+                Seu navegador não suporta a tag de áudio.
+            </audio>
+        </div>
+
+        <!-- Botão de Voltar -->
+        <div class="button-container">
+            <a href="Especificações Opel.HTML"><button>Voltar</button></a>
+        </div>
+    </section>
+
+</body>
+</html>

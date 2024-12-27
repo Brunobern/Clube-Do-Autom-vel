@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube Do Automóvel - Especificações Opel Corsa A GSI</title>
+
+    <!-- Adicionando o favicon -->
+    <link rel="icon" href="Logotipo/Logotipo 3.png" type="image/x-icon">
+
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos da página */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0b1a2b, #191970);
+            color: #eaeaea;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Animação de fade-in para o corpo */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilos do cabeçalho */
+        header {
+            width: 100%;
+            background-color: #1a2634;
+            color: #d1d1d1;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: slideInDown 1s ease-in-out forwards;
+            border: 1px solid #1a2634;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: #d1d1d1;
+            font-size: 1rem;
+        }
+
+        /* Animação de slide-down para o cabeçalho */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilo da seção de conteúdo */
+        .content {
+            max-width: 800px;
+            width: 100%;
+            background-color: #1a2634;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out 0.5s forwards;
+            border: 1px solid #1a2634;
+        }
+
+        /* Animação de fade-in com leve movimento para cima */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content h2 {
+            color: #d1d1d1;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            animation: popUp 0.6s ease-in-out;
+        }
+
+        /* Animação de leve pop-up */
+        @keyframes popUp {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .car-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .car-info img {
+            max-width: 250px;
+            margin-right: 20px;
+            border-radius: 10px;
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 0px 10px rgb(255, 0, 0);
+        }
+
+        .car-info img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px rgb(255, 0, 0);
+        }
+
+        .spec-list {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            opacity: 0;
+            animation: fadeInList 0.8s ease-in-out 0.6s forwards;
+        }
+
+        /* Animação para cada item da lista */
+        @keyframes fadeInList {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .spec-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #2b2b2b;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .spec-list li strong {
+            color: #d1d1d1;
+        }
+
+        .car-description {
+            margin-top: 20px;
+            line-height: 1.8;
+            font-size: 1rem;
+            text-align: justify;
+            color: #d1d1d1;
+        }
+
+        .car-description p {
+            margin-bottom: 15px;
+        }
+
+        /* Estilo de botões */
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button-container a button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            background-color: #d1d1d1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .button-container a button:hover {
+            transform: scale(1.1);
+            background-color: #d1d1d1;
+        }
+
+        .button-container a button:active {
+            transform: scale(0.95);
+        }
+
+        /* Estilo do player de áudio */
+        .audio-container {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 1s forwards;
+        }
+
+        .audio-container h3 {
+            color: #d1d1d1;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 5px;
+            margin-top: 10px;
+            background-color: #1a2634; 
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .car-description {
+            margin-top: 20px;
+            line-height: 1.8;
+            font-size: 1rem;
+            text-align: justify;
+            color: #d1d1d1;
+        }
+
+        .car-description p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Especificações da Marca Opel</h1>
+        <p>Explore as especificações técnicas e características dos veículos Opel.</p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <section class="content">
+        <h2>Ficha Técnica:</h2>
+        <div class="car-info">
+            <img src="Imagens/Opel Astra F GSI.jpg" alt="Opel Corsa A GSI">
+            <ul class="spec-list">
+                <li><strong>Modelo:</strong> Opel Astra F GSI</li>
+                <li><strong>Motor:</strong> Motor 4 em Linha 16v 1998 cm³</li>
+                <li><strong>Potência:</strong> 150 Cv / 196 Nm</li>
+                <li><strong>Consumo:</strong> 8.6 L/100km</li>
+                <li><strong>Transmissão:</strong> Manual de 5 velocidades / 220 Km/h / FWD</li>
+                <li><strong>Aceleração:</strong> 0-100 km/h em 8.0s</li>
+                <li><strong>Turbo:</strong> Naturalmente Aspirado</li>
+                <li><strong>Combustível:</strong> Gasolina</li>
+            </ul>
+        </div>
+
+        <!-- Descrição do Carro -->
+        <section class="content">
+            <h2>Sobre o Opel Astra F GSI:</h2>
+            <div class="car-description">
+                <p>O Opel Astra F GSI é um marco na história dos hot hatches, representando o auge da engenharia esportiva acessível dos anos 90. Lançado como a versão de alto desempenho do Astra F, ele combinava potência, estilo e tecnologia, conquistando fãs e consolidando sua posição como um ícone automotivo.
+
+                    O destaque do Astra F GSI é o motor 2.0 de 16 válvulas (C20XE), que entrega 150 cavalos de potência. Reconhecido como um dos melhores motores naturalmente aspirados da sua época, ele oferece uma resposta imediata ao acelerador e um desempenho robusto, seja em altas rotações ou no uso diário. A aceleração de 0 a 100 km/h em menos de 9 segundos e sua estabilidade em velocidades mais altas garantem uma experiência de condução emocionante, especialmente em estradas sinuosas.
+                    
+                    Esteticamente, o Astra F GSI exala esportividade com seu design marcante. Para-choques mais robustos, saias laterais, aerofólio traseiro e detalhes como o emblema "GSI" dão ao carro uma aparência agressiva, mas elegante. As rodas exclusivas e as faixas decorativas laterais completam o visual que, para a época, era sinônimo de modernidade e desempenho.
+                    
+                    Por dentro, o Astra F GSI impressionava com uma cabine focada no motorista. Bancos esportivos, volante em couro e um painel com instrumentos detalhados reforçavam sua proposta esportiva. Ao mesmo tempo, ele mantinha a praticidade de um hatch médio, com espaço suficiente para passageiros e bagagem, tornando-o uma escolha versátil para quem queria desempenho sem comprometer o uso diário.
+                    
+                    Na prática, o Astra F GSI era acessível e confiável, mas hoje se tornou uma raridade. Encontrar um exemplar bem conservado exige paciência e dedicação, especialmente porque muitos modelos foram usados intensivamente devido à sua proposta esportiva. Além disso, ele é valorizado como um clássico, e os exemplares originais estão se tornando cada vez mais desejados.
+                    
+                    Minha opinião? O Opel Astra F GSI é um símbolo de uma era onde os hot hatches eram simples, emocionantes e acessíveis. Ele encapsula o espírito dos anos 90, oferecendo desempenho puro e um design que continua a atrair olhares. Para quem tem a sorte de dirigir ou possuir um, o Astra F GSI é mais do que um carro: é uma peça de história automotiva que merece ser preservada e admirada.
+                </p>
+                <!-- Inclua o texto completo aqui -->
+            </div>
+        </section>
+
+        <!-- Seção de Áudio -->
+        <div class="audio-container">
+            <h3>Ouça o Som do Motor C20XE</h3>
+            <audio controls>
+                <source src="audio/Opel Astra GSi 2.0 16V.mp3" type="audio/mp3">
+                <source src="audio/Opel Astra GSi 2.0 16V.mp3" type="audio/ogg">
+                Seu navegador não suporta a tag de áudio.
+            </audio>
+        </div>
+
+        <!-- Botão de Voltar -->
+        <div class="button-container">
+            <a href="Especificações Opel.HTML"><button>Voltar</button></a>
+        </div>
+    </section>
+
+</body>
+</html>

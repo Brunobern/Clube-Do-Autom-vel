@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube Do Automóvel - Especificações Opel Corsa A GSI</title>
+
+    <!-- Adicionando o favicon -->
+    <link rel="icon" href="Logotipo/Logotipo 3.png" type="image/x-icon">
+
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos da página */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0b1a2b, #191970);
+            color: #d1d1d1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Animação de fade-in para o corpo */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilos do cabeçalho */
+        header {
+            width: 100%;
+            background-color: #1a2634;
+            color: #d1d1d1;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: slideInDown 1s ease-in-out forwards;
+            border: 1px solid #1a2634;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: #d1d1d1;
+            font-size: 1rem;
+        }
+
+        /* Animação de slide-down para o cabeçalho */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Estilo da seção de conteúdo */
+        .content {
+            max-width: 800px;
+            width: 100%;
+            background-color: #1a2634;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out 0.5s forwards;
+            border: 1px solid #1a2634;
+        }
+
+        /* Animação de fade-in com leve movimento para cima */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content h2 {
+            color: #d1d1d1;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            animation: popUp 0.6s ease-in-out;
+        }
+
+        /* Animação de leve pop-up */
+        @keyframes popUp {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .car-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .car-info img {
+            max-width: 250px;
+            margin-right: 20px;
+            border-radius: 10px;
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 0px 10px rgb(255, 0, 0);
+        }
+
+        .car-info img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px rgba(255, 0, 0,);
+        }
+
+        .spec-list {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            opacity: 0;
+            animation: fadeInList 0.8s ease-in-out 0.6s forwards;
+        }
+
+        /* Animação para cada item da lista */
+        @keyframes fadeInList {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .spec-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #2b2b2b;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .spec-list li strong {
+            color: #d1d1d1;
+        }
+
+        .car-description {
+            margin-top: 20px;
+            line-height: 1.8;
+            font-size: 1rem;
+            text-align: justify;
+            color: #d1d1d1;
+        }
+
+        .car-description p {
+            margin-bottom: 15px;
+        }
+
+        /* Estilo de botões */
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button-container a button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            background-color: #d1d1d1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .button-container a button:hover {
+            transform: scale(1.1);
+            background-color: #d1d1d1;
+        }
+
+        .button-container a button:active {
+            transform: scale(0.95);
+        }
+
+        /* Estilo do player de áudio */
+        .audio-container {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 1s forwards;
+        }
+
+        .audio-container h3 {
+            color: #d1d1d1;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 5px;
+            margin-top: 10px;
+            background-color: #1a2634; 
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .car-description {
+            margin-top: 20px;
+            line-height: 1.8;
+            font-size: 1rem;
+            text-align: justify;
+            color: #d1d1d1;
+        }
+
+        .car-description p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Especificações da Marca Opel</h1>
+        <p>Explore as especificações técnicas e características dos veículos Opel.</p>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <section class="content">
+        <h2>Ficha Técnica:</h2>
+        <div class="car-info">
+            <img src="Imagens/Opel Corsa A GSI.jpg" alt="Opel Corsa A GSI">
+            <ul class="spec-list">
+                <li><strong>Modelo:</strong> Opel Corsa A GSI</li>
+                <li><strong>Motor:</strong> Motor 4 em Linha 8v 1598 cm³</li>
+                <li><strong>Potência:</strong> 101 Cv / 135 Nm</li>
+                <li><strong>Consumo:</strong> 7.2 L/100km</li>
+                <li><strong>Transmissão:</strong> Manual de 5 velocidades / 188 Km/h / FWD</li>
+                <li><strong>Aceleração:</strong> 0-100 km/h em 9.5s</li>
+                <li><strong>Turbo:</strong> Naturalmente Aspirado</li>
+                <li><strong>Combustível:</strong> Gasolina</li>
+            </ul>
+        </div>
+
+        <!-- Descrição do Carro -->
+        <section class="content">
+            <h2>Sobre o Opel Corsa A GSI:</h2>
+            <div class="car-description">
+                <p>O Opel Corsa A GSI é um verdadeiro clássico dos carros compactos esportivos. Apesar de ser lançado há décadas, ele continua sendo uma referência para os entusiastas de carros que valorizam a combinação de desempenho acessível e design icônico.
+
+                    O que chama a atenção no Corsa A GSI é o equilíbrio entre potência e peso. Com um motor 1.6 de 8 válvulas, naturalmente aspirado, que entrega 101 cavalos de potência, o carro oferece uma aceleração ágil e uma dirigibilidade divertida. Ele pode não ser um monstro de força em comparação com os padrões modernos, mas em estradas sinuosas e circuitos curtos, ele brilha graças ao seu baixo peso e dinâmica bem ajustada.
+                    
+                    Esteticamente, o Corsa A GSI tem aquele charme dos anos 80: linhas quadradas e simples, mas cheias de personalidade. Os detalhes esportivos, como o logotipo "GSI" e o estilo discreto, reforçam a ideia de que é um carro feito para quem entende e aprecia desempenho sem ostentação.
+                    
+                    Na prática, ele é um carro que entrega emoção a um custo relativamente baixo, seja em termos de manutenção, seja no consumo, que é moderado para um esportivo da época. Porém, como qualquer clássico, pode ser difícil encontrar um exemplar em bom estado, e o valor de mercado dos bem conservados está subindo rapidamente.
+                    
+                    Minha opinião? O Opel Corsa A GSI é um ícone para quem gosta de carros pequenos, divertidos e cheios de história. Dirigir um é experimentar um pedaço da cultura automotiva que definiu uma geração de hatchbacks esportivos. Mesmo enfrentando os desafios da idade, ele continua relevante como uma peça de engenharia que merece respeito e preservação.
+                </p>
+                <!-- Inclua o texto completo aqui -->
+            </div>
+        </section>
+
+        <!-- Seção de Áudio -->
+        <div class="audio-container">
+            <h3>Ouça o Som do Motor E16SE</h3>
+            <audio controls>
+                <source src="audio/Opel Corsa A gsi 1.6 8v (e16se).mp3" type="audio/mp3">
+                Seu navegador não suporta a tag de áudio.
+            </audio>
+        </div>
+
+        <!-- Botão de Retorno -->
+        <div class="button-container">
+            <a href="Especificações Opel.HTML"><button>Voltar</button></a>
+        </div>
+    </section>
+
+</body>
+</html>

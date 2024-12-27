@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial de Pilotos - Clube Do Automóvel</title>
+
+    <!-- Adicionando o favicon -->
+    <link rel="icon" href="Logotipo/Logotipo 3.png" type="image/x-icon">
+    
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos do body */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0b1a2b, #191970);
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Cabeçalho */
+        header {
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o cabeçalho */
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            border-radius: 15px;
+            margin-bottom: 90px;
+            text-align: center;
+        }
+
+        header div {
+            display: flex;
+            align-items: center; /* Alinha o logotipo e o título verticalmente */
+            justify-content: center;
+            gap: 15px; /* Espaço entre o logotipo e o título */
+        }
+
+        header .logo {
+            width: 195px; /* Ajuste o tamanho do logotipo conforme necessário */
+            height: auto;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: #78aaff; /* Azul suave para o título */
+            text-transform: uppercase;
+        }
+
+        /* Barra de navegação */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        nav a {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #78aaff; /* Azul suave para os links */
+            text-decoration: none;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #333333; /* Cor escura no hover */
+            color: #fff;
+        }
+
+        /* Container principal */
+        .main-content {
+            max-width: 1100px;
+            width: 100%;
+            background-color: #1a2634;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            text-align: center;
+        }
+
+        .main-content h2 {
+            color: #78aaff;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .piloto {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #1a2634;
+            transition: background-color 0.3s;
+        }
+
+        .piloto:hover {
+            background-color: #1a2634;
+        }
+
+        .piloto img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+        }
+
+        .piloto-info {
+            max-width: 700px;
+            margin-right: 20px;
+            text-align: left;
+        }
+
+        .piloto-info h3 {
+            font-size: 1.5rem;
+            color: #78aaff;
+            margin-bottom: 5px;
+        }
+
+        .piloto-info p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #bdbdbd;
+        }
+
+        /* Botão "Ver Detalhes" */
+        .detail-button {
+            padding: 10px 20px;
+            background-color: #78aaff;
+            color: #1a2634;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .detail-button:hover {
+            background-color: #78aaff;
+            transform: scale(1.05);
+        }
+
+        .detail-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Botão de Voltar */
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #78aaff;
+            color: #1a2634;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #78aaff;
+            transform: scale(1.05);
+        }
+
+        /* Rodapé */
+        footer {
+            width: 100%;
+            background-color: #1a2634; /* Azul escuro para o rodapé */
+            color: #d8d8d8;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0,4);
+            font-size: 1rem;
+        }
+            /* Botões de redes sociais no rodapé */
+        .social-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #eaeaea; /* Cor padrão do texto */
+            background-color: #1a2634; /* Fundo azul escuro */
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .social-button:hover {
+            background-color: #333333; /* Fundo mais escuro no hover */
+             color: #fff; /* Texto branco no hover */
+            transform: scale(1.05);
+        }
+
+        .social-button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div>
+            <img src="Logotipo/Logotipo 3.png" alt="Logotipo Clube Do Automóvel" class="logo">
+            <h1>Clube Do Automóvel</h1>
+        </div>
+        <nav>
+            <a href="Home.HTML">Início</a>
+            <a href="Memorial.HTML">Memorial</a>
+            <a href="História Marca.HTML">História Marca</a>
+            <a href="Sobre.HTML">Sobre</a>
+            <a href="Mecânica.HTML">Mecânica</a>
+            <a href="Pistas.HTML">Pistas</a>
+            <a href="Corridas.HTML">Corridas</a>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <h2>Homenagem aos Grandes Pilotos</h2>
+
+        <!-- Ayrton Senna -->
+        <div class="piloto">
+            <img src="Imagens Pilotos/capa_mobile_blog_ayrton_senna.webp" alt="Ayrton Senna">
+            <div class="piloto-info">
+                <h3>Ayrton Senna</h3>
+                <p>Ayrton Senna foi tricampeão mundial de Fórmula 1, vencendo os campeonatos em 1988, 1990 e 1991. Conhecido por sua habilidade excepcional em condições de pista molhada e sua coragem em corridas decisivas, Senna conquistou a admiração de fãs em todo o mundo. Seu carisma tanto dentro quanto fora das pistas o tornou um dos maiores ícones do esporte.</p>
+            </div>
+            <a href="Ayrton Senna.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <!-- Niki Lauda -->
+        <div class="piloto">
+            <img src="Imagens Pilotos/Niki Laudaa.webp" alt="Niki Lauda">
+            <div class="piloto-info">
+                <h3>Niki Lauda</h3>
+                <p>Niki Lauda foi tricampeão mundial de Fórmula 1, conquistando os títulos em 1975, 1977 e 1984. Ele é amplamente lembrado por sua recuperação heroica após o grave acidente de 1976, que quase lhe custou a vida. Além disso, sua inteligência estratégica e abordagem meticulosa nas corridas o tornaram um dos pilotos mais respeitados na história da Fórmula 1.</p>
+            </div>
+            <a href="Niki_Lauda.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <!-- Michael Schumacher -->
+        <div class="piloto">
+            <img src="Imagens Pilotos/Michael Schumacker.webp" alt="Michael Schumacher">
+            <div class="piloto-info">
+                <h3>Michael Schumacher</h3>
+                <p>Michael Schumacher é amplamente considerado um dos maiores pilotos da história da Fórmula 1, conquistando sete campeonatos mundiais, em 1994, 1995, 2000, 2001, 2002, 2003 e 2004. Ele também estabeleceu inúmeros recordes durante sua carreira, incluindo o maior número de vitórias, pole positions e pódios em sua época. Conhecido por sua determinação implacável e habilidades excepcionais, Schumacher tornou-se uma lenda do automobilismo.</p>
+            </div>
+            <a href="Michael_Schumacher.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Collin Mcrae.jpeg" alt="Colin McRae">
+            <div class="piloto-info">
+                <h3>Collin McRae</h3>
+                <p>Collin McRae foi um ícone do mundo dos ralis, famoso por seu estilo agressivo e audacioso. Ele conquistou o Campeonato Mundial de Rali (WRC) em 1995 e se tornou o primeiro britânico a vencer o título mundial. Além de suas vitórias, McRae é lembrado por sua personalidade carismática e pelo impacto que teve no esporte, popularizando os ralis entre os fãs em todo o mundo.</p>
+            </div>
+            <a href="Colin_McRae.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Juan Manuel Fangio.jpg" alt="Juan Manuel Fangio">
+            <div class="piloto-info">
+                <h3>Juan Manuel Fangio</h3>
+                <p>Juan Manuel Fangio foi cinco vezes campeão mundial de Fórmula 1, conquistando os títulos entre 1951 e 1957. Considerado um dos maiores pilotos da história do automobilismo, Fangio dominou a F1 durante a década de 1950, correndo para equipes como Alfa Romeo, Ferrari, Mercedes e Maserati. Sua habilidade excepcional e calma sob pressão o tornaram uma lenda das pistas.</p>
+            </div>
+            <a href="Juan Manuel Fangio.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Alan Prost.webp" alt="Alain Prost">
+            <div class="piloto-info">
+                <h3>Alain Prost</h3>
+                <p>Alain Prost, conhecido como "O Professor", foi tetracampeão mundial de Fórmula 1, famoso por sua inteligência tática e estilo de pilotagem calculado.</p>
+            </div>
+            <a href="Alan Prost.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Sebastian Vettel.jpg" alt="Sebastian Vettel">
+            <div class="piloto-info">
+                <h3>Sebastian Vettel</h3>
+                <p>Sebastian Vettel é tetracampeão mundial de Fórmula 1, conhecido por sua determinação, consistência e domínio durante sua passagem pela Red Bull Racing.</p>
+            </div>
+            <a href="Sebastian Vettel.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Jim Clark.jpg" alt="Jim Clark">
+            <div class="piloto-info">
+                <h3>Jim Clark</h3>
+                <p>Jim Clark foi um dos maiores pilotos da Fórmula 1, conquistando dois campeonatos mundiais e sendo lembrado por sua habilidade excepcional e versatilidade em diferentes categorias do automobilismo.</p>
+            </div>
+            <a href="Jim_Clark.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Jackie Stewart.webp" alt="Jackie Stewart">
+            <div class="piloto-info">
+                <h3>Jackie Stewart</h3>
+                <p>Jackie Stewart, conhecido como "O Escocês Voador", foi tricampeão mundial de Fórmula 1 e é amplamente reconhecido por suas contribuições para melhorar a segurança no automobilismo.</p>
+            </div>
+            <a href="Jackie_Stewart.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Nelson Piquet.jpg" alt="Nelson Piquet">
+            <div class="piloto-info">
+                <h3>Nelson Piquet</h3>
+                <p>Nelson Piquet foi tricampeão mundial de Fórmula 1, conhecido por sua habilidade técnica, inteligência estratégica e personalidade marcante no mundo do automobilismo.</p>
+            </div>
+            <a href="Nelson_Piquet.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Emerson Fittipaldi.jpg" alt="Emerson Fittipaldi">
+            <div class="piloto-info">
+                <h3>Emerson Fittipaldi</h3>
+                <p>Emerson Fittipaldi foi o primeiro brasileiro a conquistar um título na Fórmula 1, sendo bicampeão mundial. Ele também teve uma carreira marcante na Indy, onde venceu as 500 Milhas de Indianápolis duas vezes.</p>
+            </div>
+            <a href="Emerson_Fittipaldi.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Fernando Alonso.jpg" alt="Fernando Alonso">
+            <div class="piloto-info">
+                <h3>Fernando Alonso</h3>
+                <p>Fernando Alonso é bicampeão mundial de Fórmula 1, conhecido por sua habilidade excepcional e sua longevidade no esporte. Ele venceu os campeonatos de 2005 e 2006, e é amplamente reconhecido por suas conquistas tanto na F1 quanto em outras competições de automobilismo.</p>
+            </div>
+            <a href="Fernando_Alonso.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Nigel Mansell.webp" alt="Nigel Mansell">
+            <div class="piloto-info">
+                <h3>Nigel Mansell</h3>
+                <p>Nigel Mansell foi campeão mundial de Fórmula 1 em 1992, sendo conhecido por seu estilo agressivo de pilotagem e sua perseverança nas pistas. Ele também teve grande sucesso em outras categorias, como a IndyCar, onde conquistou o título de campeão em 1993.</p>
+            </div>
+            <a href="Nigel_Mansell.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/James Hunt.webp" alt="James Hunt">
+            <div class="piloto-info">
+                <h3>James Hunt</h3>
+                <p>James Hunt foi campeão mundial de Fórmula 1 em 1976, sendo conhecido por seu estilo de vida rebelde e suas intensas rivalidades, especialmente com Niki Lauda, em uma das temporadas mais emocionantes da história da F1.</p>
+            </div>
+            <a href="James_Hunt.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Michèle Mouton.jpg" alt="Michèle Mouton">
+            <div class="piloto-info">
+                <h3>Michèle Mouton</h3>
+                <p>Michèle Mouton foi uma piloto francesa de rally, reconhecida por sua habilidade e determinação. Ela foi uma das primeiras mulheres a competir no Campeonato Mundial de Rally e é a única mulher a vencer uma prova do WRC, conquistando grandes feitos na história do automobilismo.</p>
+            </div>
+            <a href="Michele_Mouton.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Henri Toivonen.jpg" alt="Henri Toivonen">
+            <div class="piloto-info">
+                <h3>Henri Toivonen</h3>
+                <p>Henri Toivonen foi um piloto finlandês de rally, considerado um dos maiores talentos do automobilismo. Ele se destacou por sua habilidade e coragem nas competições, conquistando vitórias no Campeonato Mundial de Rally (WRC) antes de sua trágica morte em um acidente durante o Rally da Córsega em 1986. Toivonen é lembrado como uma lenda do rally.</p>
+            </div>
+            <a href="Henri_Toivonen.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Walter Röhrl.webp" alt="Walter Röhrl">
+            <div class="piloto-info">
+                <h3>Walter Röhrl</h3>
+                <p>Walter Röhrl é um piloto de rally alemão, amplamente considerado uma lenda no esporte. Campeão mundial de rally em 1980 e 1982, Röhrl se destacou por sua habilidade excepcional em diferentes condições de pista e por sua impressionante técnica de pilotagem. Ele é amplamente respeitado por suas vitórias no Campeonato Mundial de Rally (WRC) e por sua longevidade no esporte.</p>
+            </div>
+            <a href="Walter_Rohrl.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Markku Alén.jpg" alt="Markku Alén">
+            <div class="piloto-info">
+                <h3>Markku Alén</h3>
+                <p>Markku Alén é um piloto de rally finlandês, considerado um dos maiores nomes do esporte. Alén venceu várias etapas do Campeonato Mundial de Rally (WRC) e foi um dos principais competidores nos anos 1970 e 1980. Ele é especialmente conhecido por sua habilidade em pisos de terra e por ser um dos pioneiros do rally finlandês, com uma carreira repleta de vitórias e recordes.</p>
+            </div>
+            <a href="Markku_Alen.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Juha Kankkunen.jpg" alt="Juha Kankkunen">
+            <div class="piloto-info">
+                <h3>Juha Kankkunen</h3>
+                <p>Juha Kankkunen é um piloto de rally finlandês, um dos maiores campeões do Campeonato Mundial de Rally (WRC). Ele conquistou quatro títulos mundiais e é reconhecido por sua habilidade excepcional em diversos tipos de terreno, incluindo neve e asfalto. Sua carreira de sucesso inclui vitórias em ralis famosos, como o Rally de Monte Carlo, e ele continua sendo uma lenda no mundo dos ralis.</p>
+            </div>
+            <a href="Juha_Kankkunen.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+
+        <div class="piloto">
+            <img src="Imagens Pilotos/Sébastien Loeb.jpeg" alt="Sébastien Loeb">
+            <div class="piloto-info">
+                <h3>Sébastien Loeb</h3>
+                <p>Sébastien Loeb é um piloto de rally francês, amplamente considerado um dos maiores de todos os tempos. Ele conquistou nove títulos consecutivos no Campeonato Mundial de Rally (WRC), de 2004 a 2012, e é conhecido por sua habilidade extraordinária em todas as condições de terreno. Loeb também se destacou em outras competições, como o Dakar Rally e corridas de turismo, consolidando-se como uma lenda do automobilismo.</p>
+            </div>
+            <a href="Sebastien_Loeb.HTML"><button class="detail-button">Ver Detalhes</button></a>
+        </div>        
+    </div>
+
+    <!-- Rodapé -->
+<footer>
+    <p>&copy; 2024 Clube Do Automóvel - Todos os direitos reservados</p>
+    <div class="social-buttons">
+        <a href="https://discord.gg/bC968UAMvy" target="_blank" class="social-button discord">
+            <img src="Redes Sociais/Discord.png" alt="Discord">
+            Discord
+        </a>
+        <a href="https://x.com/automovel_86075" target="_blank" class="social-button twitter">
+            <img src="Redes Sociais/X.png" alt="Twitter">
+            Twitter
+        </a>
+        <a href="https://www.tiktok.com/@clube.do.automovel" target="_blank" class="social-button tiktok">
+            <img src="Redes Sociais/Tik Tok.png" alt="TikTok">
+            TikTok
+        </a>
+        <a href="https://www.instagram.com/clube.do.automovel/" target="_blank" class="social-button instagram">
+            <img src="Redes Sociais/Instagram.webp" alt="Instagram">
+            Instagram
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clube Do Automóvel Opel</title>
+
+    <!-- Adicionando o favicon -->
+    <link rel="icon" href="Logotipo/Logotipo 3.png" type="image/x-icon">
+
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilo geral */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0b1a2b, #191970);
+            color: #E2E8F0; /* Texto suave */
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #1a2634; /* Azul vibrante */
+            color: #78aaff; /* Branco suave */
+            padding: 20px 30px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        /* Relógio */
+        .clock {
+            font-size: 2rem;
+            color: #78aaff; /* Amarelo vibrante */
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Menu de Navegação */
+        nav {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .animated-button {
+            position: relative;
+            display: inline-block;
+            padding: 12px 24px;
+            border: none;
+            font-size: 16px;
+            background-color: #1a2634; /* Cinza escuro */
+            color: #FAFAFA; /* Branco suave */
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 0 0 2px #ffffff20;
+            cursor: pointer;
+            overflow: hidden;
+            text-decoration: none;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .animated-button span:last-child {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: #78aaff;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .animated-button span:first-child {
+            position: relative;
+            z-index: 1;
+        }
+
+        .animated-button:hover {
+            box-shadow: 0 0 0 5px #78aaff;
+            color: #ffffff;
+        }
+
+        .animated-button:active {
+            transform: scale(0.95);
+        }
+
+        .animated-button:hover span:last-child {
+            width: 150px;
+            height: 150px;
+            opacity: 1;
+        }
+
+        /* Cartões */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px; /* Adiciona um espaçamento entre as linhas de cartões */
+        }
+
+        .card {
+            box-sizing: border-box;
+            width: 190px;
+            height: 270px; /* Mantém a altura */
+            background: #1a2634; /* Escurecendo o cinza */
+            border: 1px solid #1a2634;
+            box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+            backdrop-filter: blur(6px);
+            border-radius: 17px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            font-weight: bolder;
+            color: white; /* Cor do texto branco */
+            overflow: hidden; /* Garante que qualquer excesso de imagem não ultrapasse o cartão */
+            text-decoration: none; /* Remove sublinhado */
+        }
+
+        .card h3, .card p {
+            color: white; /* Garantir que o texto dentro do cartão fique branco */
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%; /* Ajuste para ocupar 100% do cartão */
+            object-fit: cover; /* Preenche totalmente o cartão sem distorcer a imagem */
+            border-radius: 17px 17px 0 0; /* Arredonda as bordas superiores da imagem */
+            margin-bottom: 10px; /* Adiciona um pequeno espaçamento entre a imagem e o texto */
+        }
+
+        .card:hover {
+            border: 1px solid #1a2634;
+            transform: scale(1.05);
+        }
+
+        .card:active {
+            transform: scale(0.95) rotateZ(1.7deg);
+        }
+
+        /* Caixa de Pesquisa */
+        .textInputWrapper {
+            position: relative;
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        .textInput {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #78aaff;
+            border-radius: 25px;
+            background-color: #1a2634;
+            color: #F7FAFC;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .textInput:focus {
+            border-color: #78aaff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>CLUBE DO AUTOMÓVEL OPEL</h1>
+        <p>A fonte completa para especificações e detalhes de veículos Opel</p>
+        <div class="clock" id="clock"></div>
+    </header>
+
+    <!-- Menu de Navegação -->
+    <nav>
+        <a href="Home.HTML" class="animated-button"><span>Início</span><span></span></a>
+        <a href="Especificações Opel.HTML" class="animated-button"><span>Opel</span><span></span></a>
+        <a href="Especificações Fiat.HTML" class="animated-button"><span>Fiat</span><span></span></a>
+        <a href="Especificações Volvo.HTML" class="animated-button"><span>Volvo</span><span></span></a>
+        <a href="Especificações Toyota.HTML" class="animated-button"><span>Toyota</span><span></span></a>
+        <a href="Especificações Lancia.HTML" class="animated-button"><span>Lancia</span><span></span></a>
+    </nav>
+
+    <!-- Caixa de Pesquisa -->
+    <div class="textInputWrapper">
+        <input id="searchInput" class="textInput" type="text" placeholder="Pesquisar Modelos Opel">
+    </div>
+
+    <!-- Primeira Linha de Cartões -->
+    <div class="cards-container">
+        <a href="OPEL.Corsa.A GSI.HTML" class="card">
+            <img src="Imagens/Opel Corsa A GSI.jpg" alt="Opel Corsa A">
+            <h3>Opel Corsa A</h3>
+            <p>( Opel Corsa A GSI )</p>
+        </a>
+
+        <a href="OPEL.Corsa.B GSI.HtmL" class="card">
+            <img src="Imagens/Opel Corsa B GSI.jpeg" alt="Opel Corsa B">
+            <h3>Opel Corsa B</h3>
+            <p>( Opel Corsa B GSI )</p>
+        </a>
+
+        <a href="OPEL.Corsa.B 1.7D.HTML" class="card">
+            <img src="Imagens/Opel Corsa B 1.7D.jpg" alt="Opel Corsa B 1.7D">
+            <h3>Opel Corsa B</h3>
+            <p>( Opel Corsa B 1.7D )</p>
+        </a>
+
+        <a href="OPEL.Corsa.C GSI.HTML" class="card">
+            <img src="Imagens/Opel Corsa C GSI.jpeg" alt="Opel Corsa C GSI">
+            <h3>Opel Corsa C</h3>
+            <p>( Opel Corsa C GSI )</p>
+        </a>
+        
+        <a href="OPEL.Corsa.D OPC.HTML" class="card">
+            <img src="Imagens/Opel Corsa D OPC.jpg" alt="Opel Corsa D OPC">
+            <h3>Opel Corsa D</h3>
+            <p>( Opel Corsa D OPC )</p>
+        </a>
+
+        <a href="OPEL.CORSA.E OPC.HTML" class="card">
+            <img src="Imagens/Opel Corsa E OPC.jpg" alt="Opel Corsa E OPC">
+            <h3>Opel Corsa E</h3>
+            <p>( Opel Corsa E OPC )</p>
+        </a>
+
+    </div>
+
+    <!-- Segunda Linha de Cartões -->
+    <div class="cards-container">
+        <a href="OPEL.Corsa.F.HTML" class="card">
+            <img src="Imagens/Opel Corsa F.jpg" alt="Opel Corsa F Turbo">
+            <h3>Opel Corsa F</h3>
+            <p>( Opel Corsa F Turbo )</p>
+        </a>
+
+        <a href="OPEL.Astra.F GSI.HTML" class="card">
+            <img src="Imagens/Opel Astra F GSI.jpg" alt="Opel Astra F GSI">
+            <h3>Opel Astra F</h3>
+            <p>( Opel Astra F GSI )</p>
+        </a>
+
+        <a href="OPEL.Manta.HTML" class="card">
+            <img src="Imagens/Opel Manta 400.jpg" alt="Opel Manta 400">
+            <h3>Opel Manta </h3>
+            <p>( Opel Manta 400 )</p>
+        </a>
+
+        <a href="OPEL.Monza A2.HTML" class="card">
+            <img src="Imagens/Opel Monza A2.jpg" alt="Opel Monza">
+            <h3>Opel Monza</h3>
+            <p>( Opel Monza A2 3.0 )</p>
+        </a>
+
+        <a href="Opel Ascona C.HTML" class="card">
+            <img src="Imagens/Opel Ascona C.jpg" alt="Opel Ascona C">
+            <h3>Opel Ascona C</h3>
+            <p>( Opel Ascona C )</p>
+        </a>
+
+        <a href="Opel Adam.HTML" class="card">
+            <img src="Imagens/Opel Adam.jpg" alt="Opel Adam">
+            <h3>Opel Adam </h3>
+            <p>( Opel Adam 1.4 )</p>
+        </a>
+
+    </div>
+
+    <!-- Terceira Linha de Cartões -->
+    <div class="cards-container">
+        <a href="Opel Astra G OPC.HTML" class="card">
+            <img src="Imagens/Opel Astra G OPC.jpg" alt="Opel Astra G OPC">
+            <h3>Opel Astra G</h3>
+            <p>( Opel Astra G OPC )</p>
+        </a>
+
+        <a href="Opel Astra H OPC.HTML" class="card">
+            <img src="Imagens/Opel Astra H OPC.jpg" alt="Opel Astra H OPC">
+            <h3>Opel Astra H</h3>
+            <p>( Opel Astra H OPC )</p>
+        </a>
+
+        <a href="Opel Astra J.HTML" class="card">
+            <img src="Imagens/Opel Astra J OPC.jpg" alt="Opel Astra J">
+            <h3>Opel Astra J </h3>
+            <p>( Opel Astra J OPC )</p>
+        </a>
+
+        <a href="Opel Astra K.HTML" class="card">
+            <img src="Imagens/Opel Astra K Turbo.jpg" alt="Opel Monza">
+            <h3>Opel Astra K</h3>
+            <p>( Opel Astra K OPC )</p>
+        </a>
+
+        <a href="Opel Astra L.HTML" class="card">
+            <img src="Imagens/Opel Astra L.jpg" alt="Opel Ascona C">
+            <h3>Opel Astra L</h3>
+            <p>( Opel Astra L GSE )</p>
+        </a>
+
+        <a href="Opel Kadett GSI.HTML" class="card">
+            <img src="Imagens/Opel Kadett.jpg" alt="Opel Kadett GSI">
+            <h3>Opel Kadett </h3>
+            <p>( Opel Kadett GSI )</p>
+        </a>
+
+    </div>
+
+    <!-- Quarta Linha de Cartões -->
+    <div class="cards-container">
+        <a href="Opel Speedester.HTML" class="card">
+            <img src="Imagens/Opel Speedster Turbo.jpg" alt="Opel Corsa F Turbo">
+            <h3>Opel Speedster</h3>
+            <p>( Opel Speedster Turbo )</p>
+        </a>
+
+        <a href="Opel GT Turbo.HTML" class="card">
+            <img src="Imagens/Opel GT Turbo.jpg" alt="Opel Astra F GSI">
+            <h3>Opel GT</h3>
+            <p>( Opel GT Turbo )</p>
+        </a>
+
+        <a href="Opel Kadett C GTE.HTML" class="card">
+            <img src="Imagens/Opel Kadett C GTE.jpg" alt="Opel Kadett C GTE">
+            <h3>Opel Kadett C </h3>
+            <p>( Opel Kadett C GTE )</p>
+        </a>
+
+        <a href="Opel 1900 GT.HTML" class="card">
+            <img src="Imagens/Opel GT 1900.jpg" alt="Opel Kadett C GTE">
+            <h3>Opel GT </h3>
+            <p>( Opel GT 1900 )</p>
+        </a>
+
+    </div>
+
+    <script>
+        // Função para exibir o relógio em tempo real
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours().toString().padStart(2, '0');
+            var minutes = now.getMinutes().toString().padStart(2, '0');
+            var seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('clock').textContent = hours + ':' + minutes + ':' + seconds;
+        }
+
+        setInterval(updateClock, 0);
+    </script>
+
+<script>
+
+    // Função para filtrar os cartões com base na pesquisa
+    document.getElementById('searchInput').addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.card');
+        
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('p').textContent.toLowerCase();
+            
+            // Verifica se o texto pesquisado aparece no título ou na descrição
+            if (title.includes(query) || description.includes(query)) {
+                card.style.display = "flex"; // Mostra o cartão
+            } else {
+                card.style.display = "none"; // Esconde o cartão
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>
